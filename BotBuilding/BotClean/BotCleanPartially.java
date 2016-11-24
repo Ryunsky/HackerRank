@@ -36,11 +36,11 @@ public class BotCleanPartially {
 				for(int j =0;j<5;j++){
 					if(gridC[j] != stateC[j] && gridC[j] == 'o'){
 						gridC[j] = stateC[j];
-						System.out.println(gridC[j]);
 					}
 				}
 				grid[i] = String.valueOf(gridC);
 			}
+		writer = new BufferedWriter(new FileWriter("state.txt",false));
     	} else {
     		writer = new BufferedWriter(new FileWriter("state.txt",false));
     	}
