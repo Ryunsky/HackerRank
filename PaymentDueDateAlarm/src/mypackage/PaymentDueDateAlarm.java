@@ -14,9 +14,9 @@ public class PaymentDueDateAlarm {
 
     public static void main(String[] args) throws InterruptedException {
         // TODO Auto-generated method stub
-        System.setProperty("webdriver.chrome.driver", "/Users/ehklmqf/Documents/jar/chromedriver_win32/chromedriver.exe");
+        GetUserAndPassword data = new GetUserAndPassword(System.getProperty("properties"));
+        System.setProperty("webdriver.chrome.driver", data.getProperties("mac_chrome"));
         WebDriver driver = new ChromeDriver();
-        GetUserAndPassword data = new GetUserAndPassword("/Users/ehklmqf/data.properties");
         Web rogers = new Rogers(data.getProperties("rogers_user"),
                                         data.getProperties("rogers_password"));
 //        JavascriptExecutor js = (JavascriptExecutor)driver;
