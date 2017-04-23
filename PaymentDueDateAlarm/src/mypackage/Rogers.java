@@ -47,9 +47,9 @@ public class Rogers implements Web {
         driver.get(getWebLink());
         WebElement userID = driver.findElement(By.id("USER"));
         WebElement passWD = driver.findElement(By.id("password"));
-        WebElement login = driver.findElement(By.xpath(".//button[@class='cta-round primary medium full overrite']"));
         userID.sendKeys(username);
         passWD.sendKeys(password);
+        WebElement login = driver.findElement(By.xpath(".//button[@class='cta-round primary medium full overrite']"));
         login.click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }

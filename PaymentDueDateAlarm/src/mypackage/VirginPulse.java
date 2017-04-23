@@ -48,10 +48,10 @@ public class VirginPulse implements Web {
         WebElement userID = driver.findElement(By.id("oUserID"));
         WebElement passWD = driver.findElement(By.id("oPwdID"));
         WebElement passWD_click = driver.findElement(By.id("txtPlainPassword"));
-        WebElement login = driver.findElement(By.id("oLogon"));
         userID.sendKeys(username);
         passWD_click.click();
         passWD.sendKeys(password);
+        WebElement login = driver.findElement(By.id("oLogon"));
         login.click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
