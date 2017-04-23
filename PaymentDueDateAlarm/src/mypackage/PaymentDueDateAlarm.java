@@ -13,24 +13,12 @@ public class PaymentDueDateAlarm {
         GetUserAndPassword data = new GetUserAndPassword(System.getProperty("properties"));
         System.setProperty("webdriver.chrome.driver", data.getProperties("mac_chrome"));
         WebDriver driver = new ChromeDriver();
-        Web rogers = new Rogers(data.getProperties("rogers_user"),
-                                        data.getProperties("rogers_password"));
-//        JavascriptExecutor js = (JavascriptExecutor)driver;
-//        driver.navigate().to("https://member.virginpulse.com/login.aspx?");
-//        WebElement userID = driver.findElement(By.id("oUserID"));
-//        WebElement passWD1 = driver.findElement(By.id("oPwdID"));
-//        WebElement passWD = driver.findElement(By.id("txtPlainPassword"));
-//        userID.sendKeys("yuanyun.chen@hotmail.com");
-//        WebElement logIn = driver.findElement(By.id("oLogon"));
-//        
-//        passWD.click();
-//        passWD1.sendKeys("");
-//        logIn.click();
-//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-//        driver.close();
-        
-        //https://www.rogers.com/web/totes/#/signin
+        Web rogers = new Rogers(data.getProperties("rogers.user"),
+                                        data.getProperties("rogers.password"));
+        Web virginPulse = new VirginPulse(data.getProperties("virgin.user"),
+                                        data.getProperties("virgin.password"));
         rogers.login(driver);
+        virginPulse.login(driver);
 //        driver.close();
     }
 
