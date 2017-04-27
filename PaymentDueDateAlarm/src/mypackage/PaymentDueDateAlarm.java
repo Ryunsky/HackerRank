@@ -16,7 +16,7 @@ public class PaymentDueDateAlarm {
                                         data.getProperties("rogers.password"));
         Web virginPulse = new VirginPulse(data.getProperties("virgin.user"),
                                         data.getProperties("virgin.password"));
-        new Thread(new NewWebStarter(virginPulse)).start();
+//        new Thread(new NewWebStarter(virginPulse)).start();
         new Thread(new NewWebStarter(rogers)).start();
     }
 

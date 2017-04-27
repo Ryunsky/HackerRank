@@ -52,6 +52,12 @@ public class Rogers implements Web {
         WebElement login = driver.findElement(By.xpath(".//button[@class='cta-round primary medium full overrite']"));
         login.click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        accountSelection(driver);
     }
-
+    
+    public void accountSelection(WebDriver driver){
+        if (driver.findElement(By.xpath(".//div[contains(@modal-render, 'true')]")) != null) {
+            driver.findElement(By.xpath("//li[@class='ng-scope' and .//span[contains(text(), '240753047403')]]")).click();
+        }
+    }
 }
