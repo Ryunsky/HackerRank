@@ -53,11 +53,28 @@ public class Rogers implements Web {
         login.click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         accountSelection(driver);
+        viewBill(driver);
+        printBillAmountAndDate(driver);
+        driver.close();
     }
     
     public void accountSelection(WebDriver driver){
         if (driver.findElement(By.xpath(".//div[contains(@modal-render, 'true')]")) != null) {
             driver.findElement(By.xpath("//li[@class='ng-scope' and .//span[contains(text(), '240753047403')]]")).click();
         }
+    }
+    
+    public void viewBill(WebDriver driver){
+        driver.findElement(By.xpath("//button[@class='btn-view-bill']")).click();
+    }
+    
+    //switch to the iframe first, and then find the element
+    public void printBillAmountAndDate(WebDriver driver){
+        driver.switchTo().frame(driver.findElement(By.id("bb_iframe_container bb_iframe")));
+        WebElement amount = driver.findElement(By.xpath("//span[starts-with(@ng-bind-html, 'document.account_balance.amount_with_tax')]"));
+        System.out.println(amount.getText());
+        WebElement date = (driver.findElement(By.xpath("//div[@class='due ng-binding ng-scope']")))
+                .findElement(By.xpath(".//strong"));
+        System.out.println(date.getText());
     }
 }
