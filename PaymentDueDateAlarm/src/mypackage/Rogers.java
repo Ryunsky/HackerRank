@@ -60,7 +60,7 @@ public class Rogers implements Web {
     
     public void accountSelection(WebDriver driver){
         if (driver.findElement(By.xpath(".//div[contains(@modal-render, 'true')]")) != null) {
-            driver.findElement(By.xpath("//li[@class='ng-scope' and .//span[contains(text(), '240753047403')]]")).click();
+            driver.findElement(By.xpath("//span[@class='account-number-txt' and .//span[contains(text(), '240753047403')]]")).click();
         }
     }
     
