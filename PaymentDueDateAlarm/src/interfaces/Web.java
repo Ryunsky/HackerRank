@@ -1,5 +1,6 @@
 package interfaces;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public interface Web {
@@ -18,6 +19,6 @@ public interface Web {
     
     //login
 
-    public void login(WebDriver driver);
+    public void login(WebDriver driver)  throws NoSuchElementException, InterruptedException;
 
 }

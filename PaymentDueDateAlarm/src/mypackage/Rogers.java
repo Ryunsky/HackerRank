@@ -3,6 +3,7 @@ package mypackage;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -42,7 +43,7 @@ public class Rogers implements Web {
     }
 
     @Override
-    public void login(WebDriver driver) {
+    public void login(WebDriver driver) throws NoSuchElementException{
         // TODO Auto-generated method stub
         driver.get(getWebLink());
         WebElement userID = driver.findElement(By.id("USER"));
@@ -58,18 +59,18 @@ public class Rogers implements Web {
         driver.close();
     }
     
-    public void accountSelection(WebDriver driver){
-        if (driver.findElement(By.xpath(".//div[contains(@modal-render, 'true')]")) != null) {
+    public void accountSelection(WebDriver driver) throws NoSuchElementException{
+        if (driver.findElement(By.xpath(".//div[contains(@modal-window, '@modal-window')]")) != null) {
             driver.findElement(By.xpath("//span[@class='account-number-txt' and .//span[contains(text(), '240753047403')]]")).click();
         }
     }
     
-    public void viewBill(WebDriver driver){
+    public void viewBill(WebDriver driver) throws NoSuchElementException{
         driver.findElement(By.xpath("//button[@class='btn-view-bill']")).click();
     }
     
     //switch to the iframe first, and then find the element
-    public void printBillAmountAndDate(WebDriver driver){
+    public void printBillAmountAndDate(WebDriver driver) throws NoSuchElementException{
         driver.switchTo().frame(driver.findElement(By.id("bb_iframe_container bb_iframe")));
         WebElement amount = driver.findElement(By.xpath("//span[starts-with(@ng-bind-html, 'document.account_balance.amount_with_tax')]"));
         System.out.println(amount.getText());
