@@ -63,18 +63,20 @@ public class VirginPulse implements Web {
         healthHibit(driver, action);
     }
     
-    public void dailyCard (WebDriver driver) {
+    public void dailyCard (WebDriver driver) throws InterruptedException {
         try{
+            driver.findElement(By.xpath(".//div[contains(@ng-click, 'toggleDailyTips()')]")).click();
+            driver.findElement(By.xpath(".//div[contains(@ng-click, 'toggleDailyTips()')]")).click();
             List<WebElement> card = driver.findElements(By.xpath(".//button[@id='triggerCloseCurtain']"));
-            if (card.isEmpty()) System.out.println("you have done the daily cards for today ");
             for (int i =0 ; i < card.size(); i++){
                 WebElement e = card.get(i);
                 e.click();
                 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
                 System.out.println("here");
+                Thread.sleep(5000);
             }
         } catch (NoSuchElementException e) {
-            System.out.println("you have done the daily cards for today ");
+            System.out.println("no card is available to click ");
         }
     }
     public void healthHibit (WebDriver driver, Actions action) {
